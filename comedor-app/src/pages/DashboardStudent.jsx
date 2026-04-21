@@ -234,10 +234,10 @@ export default function DashboardStudent({ userEmail, userId }) {
 
   return (
     <div className="container">
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
-        <div style={{ marginTop: '-10px' }}>
-          <h1 style={{ fontSize: '2.5rem' }}>Student <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
-          <h2 style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--synth-dark)' }}>
+      <header className="student-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '15px' }}>
+        <div>
+          <h1 style={{ fontSize: '2rem' }}>Student <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: '600', color: 'var(--synth-dark)', marginTop: '5px' }}>
             Hola, <span style={{ color: 'var(--synth-blue)' }}>{profile?.nombre?.split(' ')[0]}</span>
           </h2>
         </div>
@@ -383,12 +383,13 @@ export default function DashboardStudent({ userEmail, userId }) {
 
                   <div style={{ background: 'white', padding: '20px', borderRadius: '20px', border: '1px solid var(--glass-border)', marginBottom: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '15px' }}>
                     <p style={{ fontWeight: '600', fontSize: '0.9rem', color: 'var(--synth-dark)', margin: 0 }}>Tu Código QR para el Comedor</p>
-                    <div style={{ padding: '15px', background: 'white', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
+                    <div style={{ padding: '15px', background: 'white', borderRadius: '15px', boxShadow: '0 4px 12px rgba(0,0,0,0.05)', maxWidth: '100%', overflow: 'hidden' }}>
                       <QRCodeCanvas 
                         value={profile?.carnet || ''} 
-                        size={180}
+                        size={window.innerWidth < 400 ? 150 : 180}
                         level={"H"}
                         includeMargin={true}
+                        style={{ maxWidth: '100%', height: 'auto' }}
                       />
                     </div>
                     <p style={{ fontSize: '0.75rem', color: 'var(--synth-muted)', textAlign: 'center' }}>Muestra este código en el mostrador para verificar tu carnet rápidamente.</p>

@@ -52,11 +52,18 @@ body::after {
 }
 
 .container, .admin-dashboard, .login-container {
-  width: 95%;
+  width: 92%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 40px 0;
-  transition: width 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .container, .admin-dashboard, .login-container {
+    width: 94%;
+    padding: 20px 0;
+  }
 }
 
 .login-container {
@@ -143,22 +150,59 @@ body::after {
   background: #fcfdfe;
 }
 @media (max-width: 768px) {
-  .container, .admin-dashboard {
-    padding: 20px 0;
-  }
-  
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.5rem !important; }
+
   .tabs {
     width: 100%;
     overflow-x: auto;
     justify-content: flex-start;
+    padding: 4px;
+    margin-bottom: 25px;
+    -webkit-overflow-scrolling: touch;
   }
-  
+
+  .tabs button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
   .status-alert {
     width: 90%;
     bottom: 20px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
   }
-  
-  h1 { font-size: 2rem !important; }
+
+  .card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+
+  .stat-card .value {
+    font-size: 1.5rem;
+  }
+
+  /* Ajuste para inputs en móviles */
+  input, select, textarea {
+    padding: 12px 16px;
+    font-size: 16px; /* Evita zoom automático en iOS */
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }
 
 /* --- Tarjetas Glass Blancas --- */

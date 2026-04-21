@@ -182,9 +182,9 @@ export default function DashboardAdmin() {
 
   return (
     <div className="admin-dashboard">
-      <header style={{ textAlign: 'center', marginBottom: '4rem' }}>
-        <h1 style={{ fontSize: '3.5rem', marginBottom: '0.5rem' }}>Comedor <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
-        <p style={{ color: 'var(--synth-muted)', fontSize: '1.1rem' }}>Sincronización inteligente de flujos alimenticios.</p>
+      <header className="admin-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{ marginBottom: '0.5rem' }}>Comedor <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
+        <p style={{ color: 'var(--synth-muted)', fontSize: '1rem' }}>Sincronización inteligente de flujos alimenticios.</p>
       </header>
 
       <div className="tabs">
@@ -204,25 +204,27 @@ export default function DashboardAdmin() {
         {activeTab === 'verificar' && (
           <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <h2 style={{ marginBottom: '2rem', textAlign: 'center' }}>Control de Acceso</h2>
-            <div style={{ display: 'flex', gap: '15px', marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '2rem', flexWrap: 'wrap' }}>
               <input 
                 type="text" 
-                placeholder="Ingresar número de carnet para verificación manual..." 
+                placeholder="Número de carnet..." 
                 value={carnet} 
                 onChange={(e) => setCarnet(e.target.value)} 
-                style={{ flex: 1, height: '64px', fontSize: '1.2rem', padding: '0 25px', borderRadius: '20px' }} 
+                style={{ flex: '1 1 200px', height: '56px' }} 
               />
-              <button className="btn-success" onClick={handleVerify} style={{ width: '80px', borderRadius: '20px' }}>
-                <Search size={28} />
-              </button>
-              <button 
-                className="btn-primary" 
-                onClick={() => setShowScanner(true)}
-                style={{ width: '80px', borderRadius: '20px', background: 'var(--synth-blue)', color: 'white' }}
-                title="Escanear QR"
-              >
-                <QrIcon size={28} />
-              </button>
+              <div style={{ display: 'flex', gap: '10px', flex: '0 0 auto' }}>
+                <button className="btn-success" onClick={handleVerify} style={{ width: '60px', height: '56px', borderRadius: '16px' }}>
+                  <Search size={24} />
+                </button>
+                <button 
+                  className="btn-primary" 
+                  onClick={() => setShowScanner(true)}
+                  style={{ width: '60px', height: '56px', borderRadius: '16px', background: 'var(--synth-blue)', color: 'white' }}
+                  title="Escanear QR"
+                >
+                  <QrIcon size={24} />
+                </button>
+              </div>
             </div>
 
             {showScanner && (

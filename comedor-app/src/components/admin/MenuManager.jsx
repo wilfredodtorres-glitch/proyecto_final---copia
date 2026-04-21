@@ -66,7 +66,7 @@ export default function MenuManager({ showStatus }) {
           <h2 style={{ fontSize: '1.4rem', margin: 0 }}>Planificación de Menús</h2>
         </div>
 
-        <div className="responsive-grid" style={{ display: 'grid', gap: '20px', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', alignItems: 'start' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <label style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--synth-muted)' }}>FECHA</label>
             <input 

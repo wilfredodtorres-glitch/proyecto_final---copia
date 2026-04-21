@@ -182,9 +182,9 @@ export default function DashboardAdmin() {
 
   return (
     <div className="admin-dashboard">
-      <header className="admin-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 style={{ marginBottom: '0.5rem' }}>Comedor <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
-        <p style={{ color: 'var(--synth-muted)', fontSize: '1rem' }}>Sincronización inteligente de flujos alimenticios.</p>
+      <header style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <h1 style={{ fontSize: '3.5rem', marginBottom: '0.5rem' }}>Comedor <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
+        <p style={{ color: 'var(--synth-muted)', fontSize: '1.1rem' }}>Sincronización inteligente de flujos alimenticios.</p>
       </header>
 
       <div className="tabs">
@@ -204,25 +204,24 @@ export default function DashboardAdmin() {
         {activeTab === 'verificar' && (
           <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <h2 style={{ marginBottom: '2rem', textAlign: 'center' }}>Control de Acceso</h2>
-            <div className="access-control-row" style={{ display: 'flex', gap: '10px', marginBottom: '2.5rem' }}>
+            <div style={{ display: 'flex', gap: '15px', marginBottom: '3rem' }}>
               <input 
                 type="text" 
-                placeholder="Ingresar carnet..." 
+                placeholder="Ingresar número de carnet para verificación manual..." 
                 value={carnet} 
                 onChange={(e) => setCarnet(e.target.value)} 
-                className="access-input"
-                style={{ flex: 1, height: '60px' }} 
+                style={{ flex: 1, height: '64px', fontSize: '1.2rem', padding: '0 25px', borderRadius: '20px' }} 
               />
-              <button className="btn-success" onClick={handleVerify} style={{ width: '60px', height: '60px', borderRadius: '16px', padding: 0 }}>
-                <Search size={24} />
+              <button className="btn-success" onClick={handleVerify} style={{ width: '80px', borderRadius: '20px' }}>
+                <Search size={28} />
               </button>
               <button 
                 className="btn-primary" 
                 onClick={() => setShowScanner(true)}
-                style={{ width: '60px', height: '60px', borderRadius: '16px', background: 'var(--synth-blue)', color: 'white', padding: 0 }}
+                style={{ width: '80px', borderRadius: '20px', background: 'var(--synth-blue)', color: 'white' }}
                 title="Escanear QR"
               >
-                <QrIcon size={24} />
+                <QrIcon size={28} />
               </button>
             </div>
 
@@ -319,7 +318,7 @@ export default function DashboardAdmin() {
                 <h2>Actividad Reciente</h2>
                 <button className="btn-primary" onClick={loadReport}><Search size={18} /> Actualizar</button>
               </div>
-              <div className="responsive-grid" style={{ display: 'grid', gap: '20px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
 
                 {/* Columna Reservados */}
                 <div>
@@ -386,7 +385,7 @@ export default function DashboardAdmin() {
                 <h2 style={{ fontSize: '1.4rem', margin: 0 }}>Gestión de Credenciales Staff</h2>
               </div>
 
-              <div className="responsive-grid" style={{ display: 'grid', gap: '20px', alignItems: 'end' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', alignItems: 'end' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--synth-muted)', marginLeft: '4px' }}>NOMBRE COMPLETO</label>
                   <div style={{ position: 'relative' }}>
@@ -556,7 +555,7 @@ export default function DashboardAdmin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div className="responsive-grid" style={{ display: 'grid', gap: '20px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div style={{ position: 'relative' }}>
                     <Mail size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--synth-muted)' }} />
                     <input

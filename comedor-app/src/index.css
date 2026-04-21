@@ -52,18 +52,11 @@ body::after {
 }
 
 .container, .admin-dashboard, .login-container {
-  width: 92%;
+  width: 95%;
   max-width: 1440px;
   margin: 0 auto;
   padding: 40px 0;
-  transition: all 0.3s ease;
-}
-
-@media (max-width: 768px) {
-  .container, .admin-dashboard, .login-container {
-    width: 94%;
-    padding: 20px 0;
-  }
+  transition: width 0.3s ease;
 }
 
 .login-container {
@@ -109,10 +102,6 @@ body::after {
   font-size: 0.7rem !important;
 }
 
-.responsive-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
 /* --- Tablas Administrativas --- */
 .table-responsive {
   width: 100%;
@@ -153,160 +142,24 @@ body::after {
 .synth-table tr:hover {
   background: #fcfdfe;
 }
-
-/* --- OPTIMIZACIÓN MÓVIL CRÍTICA --- */
 @media (max-width: 768px) {
-  :root {
-    --mobile-padding: 16px;
+  .container, .admin-dashboard {
+    padding: 20px 0;
   }
-
-  html, body {
-    overflow-x: hidden;
-    position: relative;
-    width: 100%;
-  }
-
-  .container, .admin-dashboard, .login-container, .dashboard-layout {
-    width: 100% !important;
-    max-width: 100vw !important;
-    padding: 15px var(--mobile-padding) !important;
-    overflow-x: hidden;
-  }
-
-  h1 { font-size: 1.6rem !important; }
-  h2 { font-size: 1.2rem !important; }
-
-  /* Rediseño de Pestañas a Grilla Táctil */
+  
   .tabs {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    width: 100% !important;
-    gap: 8px !important;
-    background: #f1f5f9;
-    padding: 8px !important;
-    border-radius: 16px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
   }
-
-  .tabs button {
-    width: 100% !important;
-    padding: 12px 5px !important;
-    font-size: 0.7rem !important;
-    flex-direction: column !important;
-    gap: 4px !important;
-    border-radius: 12px !important;
-    background: white;
-    border: 1px solid var(--glass-border) !important;
-  }
-
-  .tabs button svg {
-    width: 16px !important;
-    height: 16px !important;
-  }
-
-  /* Forzar Columnas Únicas */
-  .grid-fluid, .stats-grid, .responsive-grid {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-  }
-
-  .card {
-    padding: 20px !important;
-    width: 100% !important;
-    margin-bottom: 15px !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Tablas con scroll real */
-  .table-responsive {
-    margin-left: calc(var(--mobile-padding) * -0.5);
-    margin-right: calc(var(--mobile-padding) * -0.5);
-    width: calc(100% + var(--mobile-padding));
-    border-radius: 12px;
-  }
-
-  .synth-table {
-    min-width: 600px; /* Forzar scroll horizontal en la tabla para que no se aplaste */
-  }
-
-  input, select, textarea, button {
-    font-size: 16px !important;
-    height: 50px !important;
-  }
-}
-
-  .card {
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 16px;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .stat-card {
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-  }
-
-  .stat-card h5 { margin-bottom: 0; }
-  .stat-card .value { font-size: 1.5rem; }
-
-  /* Inputs y Botones Táctiles */
-  input, select, textarea {
-    width: 100% !important;
-    height: 52px !important;
-    font-size: 16px !important; /* Evita zoom en iOS */
-    padding: 12px 16px !important;
-    border-radius: 14px !important;
-  }
-
-  .btn-success, .btn-primary {
-    height: 52px;
-    border-radius: 14px;
-    width: 100%; /* Botones de ancho completo por defecto en móviles */
-  }
-
-  .access-control-row {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .access-control-row .btn-success,
-  .access-control-row .btn-primary {
-    width: calc(50% - 5px) !important; /* Dos botones por fila en móviles */
-    flex-grow: 1;
-  }
-
-  .access-input {
-    flex: 0 0 100% !important;
-    margin-bottom: 5px;
-  }
-
+  
   .status-alert {
-    width: 85%;
-    bottom: 25px;
-    padding: 14px 24px;
-    font-size: 0.85rem;
-    border-radius: 16px;
+    width: 90%;
+    bottom: 20px;
   }
-
-  .profile-photo-container {
-    width: 100px;
-    height: 100px;
-  }
-
-  .hide-mobile { display: none !important; }
-  .show-mobile { display: inline-flex !important; }
+  
+  h1 { font-size: 2rem !important; }
 }
-
-.show-mobile { display: none; }
 
 /* --- Tarjetas Glass Blancas --- */
 .card {

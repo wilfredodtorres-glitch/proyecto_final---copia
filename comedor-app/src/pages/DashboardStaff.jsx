@@ -175,10 +175,10 @@ export default function DashboardStaff({ userEmail }) {
 
   return (
     <div className="container">
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '20px' }}>
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
         <div>
-          <h1 style={{ fontSize: '2rem' }}>Staff <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
-          <p style={{ color: 'var(--synth-muted)', fontSize: '0.9rem' }}>Panel de control operativo de turno.</p>
+          <h1 style={{ fontSize: '2.5rem' }}>Staff <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
+          <p style={{ color: 'var(--synth-muted)' }}>Panel de control operativo de turno.</p>
         </div>
         <div className="tabs">
           <button className={activeTab === 'gestion' ? 'active' : ''} onClick={() => setActiveTab('gestion')}><ClipboardList size={18} /> Gestión</button>
@@ -226,19 +226,17 @@ export default function DashboardStaff({ userEmail }) {
               {/* COLUMNA VERIFICACIÓN */}
               <div className="card">
                 <h2 style={{ marginBottom: '1.5rem' }}>Verificar Estudiante</h2>
-                <div style={{ display: 'flex', gap: '10px', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                  <input type="text" placeholder="Carnet..." value={carnet} onChange={(e) => setCarnet(e.target.value)} style={{ flex: '1 1 150px', height: '48px' }} />
-                  <div style={{ display: 'flex', gap: '8px' }}>
-                    <button className="btn-success" onClick={handleVerify} title="Buscar manual" style={{ width: '48px', height: '48px', padding: 0 }}><Search size={18} /></button>
-                    <button 
-                      className="btn-primary" 
-                      onClick={() => setShowScanner(true)}
-                      style={{ background: 'var(--synth-blue)', color: 'white', width: '48px', height: '48px', padding: 0 }}
-                      title="Escanear QR"
-                    >
-                      <QrIcon size={18} />
-                    </button>
-                  </div>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '2rem' }}>
+                  <input type="text" placeholder="Carnet Estudiantil" value={carnet} onChange={(e) => setCarnet(e.target.value)} style={{ flex: 1 }} />
+                  <button className="btn-success" onClick={handleVerify} title="Buscar manual"><Search size={18} /></button>
+                  <button 
+                    className="btn-primary" 
+                    onClick={() => setShowScanner(true)}
+                    style={{ background: 'var(--synth-blue)', color: 'white' }}
+                    title="Escanear QR"
+                  >
+                    <QrIcon size={18} />
+                  </button>
                 </div>
 
                 {showScanner && (

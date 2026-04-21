@@ -204,27 +204,26 @@ export default function DashboardAdmin() {
         {activeTab === 'verificar' && (
           <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <h2 style={{ marginBottom: '2rem', textAlign: 'center' }}>Control de Acceso</h2>
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '2rem', flexWrap: 'wrap' }}>
+            <div className="access-control-row" style={{ display: 'flex', gap: '10px', marginBottom: '2.5rem' }}>
               <input 
                 type="text" 
-                placeholder="Número de carnet..." 
+                placeholder="Ingresar carnet..." 
                 value={carnet} 
                 onChange={(e) => setCarnet(e.target.value)} 
-                style={{ flex: '1 1 200px', height: '56px' }} 
+                className="access-input"
+                style={{ flex: 1, height: '60px' }} 
               />
-              <div style={{ display: 'flex', gap: '10px', flex: '0 0 auto' }}>
-                <button className="btn-success" onClick={handleVerify} style={{ width: '60px', height: '56px', borderRadius: '16px' }}>
-                  <Search size={24} />
-                </button>
-                <button 
-                  className="btn-primary" 
-                  onClick={() => setShowScanner(true)}
-                  style={{ width: '60px', height: '56px', borderRadius: '16px', background: 'var(--synth-blue)', color: 'white' }}
-                  title="Escanear QR"
-                >
-                  <QrIcon size={24} />
-                </button>
-              </div>
+              <button className="btn-success" onClick={handleVerify} style={{ width: '60px', height: '60px', borderRadius: '16px', padding: 0 }}>
+                <Search size={24} />
+              </button>
+              <button 
+                className="btn-primary" 
+                onClick={() => setShowScanner(true)}
+                style={{ width: '60px', height: '60px', borderRadius: '16px', background: 'var(--synth-blue)', color: 'white', padding: 0 }}
+                title="Escanear QR"
+              >
+                <QrIcon size={24} />
+              </button>
             </div>
 
             {showScanner && (

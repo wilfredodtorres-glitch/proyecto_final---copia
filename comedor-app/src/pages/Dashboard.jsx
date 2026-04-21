@@ -70,36 +70,35 @@ function Dashboard() {
     <div className="dashboard-layout" style={{ minHeight: '100vh' }}>
       {/* Barra Superior Fija para evitar solapamientos */}
       <nav style={{ 
-        position: 'fixed', 
+        position: 'absolute', 
         top: 0, 
         left: 0, 
         right: 0, 
-        height: '80px', 
+        height: '60px', 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'flex-end', 
-        padding: '0 40px', 
+        padding: '0 20px', 
         zIndex: 1000,
-        pointerEvents: 'none' // Permite clics a través del nav excepto en el botón
+        pointerEvents: 'none'
       }}>
         <button 
           onClick={handleLogout} 
           className="btn-primary" 
           style={{ 
             pointerEvents: 'auto',
-            padding: '10px 18px', 
-            fontSize: '0.85rem',
+            padding: '8px 16px', 
+            fontSize: '0.75rem',
             borderRadius: '12px',
-            boxShadow: '0 8px 20px rgba(0,0,0,0.1)',
             background: 'white',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
             border: '1px solid var(--glass-border)',
-            color: 'var(--synth-dark)',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px'
+            gap: '6px'
           }}
         >
-          <LogOut size={16} /> Cerrar Sesión
+          <LogOut size={14} /> <span className="hide-mobile">Cerrar Sesión</span><span className="show-mobile">Salir</span>
         </button>
       </nav>
 

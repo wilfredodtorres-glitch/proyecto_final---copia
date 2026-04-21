@@ -149,61 +149,141 @@ body::after {
 .synth-table tr:hover {
   background: #fcfdfe;
 }
+
+/* --- OPTIMIZACIÓN MÓVIL AGRESIVA --- */
 @media (max-width: 768px) {
-  h1 { font-size: 2.2rem !important; }
-  h2 { font-size: 1.5rem !important; }
+  :root {
+    --mobile-padding: 16px;
+  }
+
+  body {
+    background-size: 40px 40px; /* Grilla más pequeña para móviles */
+  }
+
+  .container, .admin-dashboard, .login-container {
+    width: 100%;
+    padding: 15px var(--mobile-padding);
+  }
+
+  h1 { 
+    font-size: 1.8rem !important; 
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  h2 { 
+    font-size: 1.3rem !important; 
+    margin-bottom: 15px;
+  }
 
   .tabs {
-    width: 100%;
+    display: flex;
+    width: calc(100% + (var(--mobile-padding) * 2));
+    margin-left: calc(var(--mobile-padding) * -1);
+    margin-right: calc(var(--mobile-padding) * -1);
+    margin-bottom: 20px;
+    padding: 8px var(--mobile-padding);
+    background: transparent;
+    border-radius: 0;
     overflow-x: auto;
     justify-content: flex-start;
-    padding: 4px;
-    margin-bottom: 25px;
+    gap: 8px;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .tabs button {
-    padding: 8px 16px;
-    font-size: 0.85rem;
+    background: white;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 0.8rem;
     white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
   }
 
-  .status-alert {
-    width: 90%;
-    bottom: 20px;
-    padding: 10px 20px;
-    font-size: 0.85rem;
+  .tabs button.active {
+    background: var(--synth-blue);
+    color: white;
+    border-color: var(--synth-blue);
   }
 
   .card {
     padding: 20px;
     border-radius: 20px;
+    margin-bottom: 16px;
   }
 
   .stats-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 12px;
   }
 
   .stat-card {
-    padding: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
   }
 
-  .stat-card .value {
-    font-size: 1.5rem;
-  }
+  .stat-card h5 { margin-bottom: 0; }
+  .stat-card .value { font-size: 1.5rem; }
 
-  /* Ajuste para inputs en móviles */
+  /* Inputs y Botones Táctiles */
   input, select, textarea {
-    padding: 12px 16px;
-    font-size: 16px; /* Evita zoom automático en iOS */
+    width: 100% !important;
+    height: 52px !important;
+    font-size: 16px !important; /* Evita zoom en iOS */
+    padding: 12px 16px !important;
+    border-radius: 14px !important;
   }
 
-  button {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  .btn-success, .btn-primary {
+    height: 52px;
+    border-radius: 14px;
+    width: 100%; /* Botones de ancho completo por defecto en móviles */
   }
+
+  .access-control-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .access-control-row .btn-success,
+  .access-control-row .btn-primary {
+    width: calc(50% - 5px) !important; /* Dos botones por fila en móviles */
+    flex-grow: 1;
+  }
+
+  .access-input {
+    flex: 0 0 100% !important;
+    margin-bottom: 5px;
+  }
+
+  .status-alert {
+    width: 85%;
+    bottom: 25px;
+    padding: 14px 24px;
+    font-size: 0.85rem;
+    border-radius: 16px;
+  }
+
+  .profile-photo-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: inline-flex !important; }
 }
+
+.show-mobile { display: none; }
 
 /* --- Tarjetas Glass Blancas --- */
 .card {

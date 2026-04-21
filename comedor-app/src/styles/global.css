@@ -1,0 +1,119 @@
+/* Fondo general */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #e6f4ea, #fdf6ec);
+}
+
+/* Contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Título */
+.title {
+  font-size: 2.5rem;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+/* Subtítulo */
+.subtitle {
+  color: #6d4c41;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 300px;
+  text-align: center;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Botones */
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #388e3c;
+}
+
+/* Decoración */
+.paw {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* Dashboard */
+.dashboard {
+  display: flex;
+  height: 100vh;
+  background: #f0f4f0;
+}
+
+.sidebar {
+  width: 250px;
+  background: #2e7d32;
+  color: white;
+  padding: 20px;
+  border-right: 2px solid #1b5e20;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  color: white;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.sidebar button:hover {
+  background: #388e3c;
+}
+
+.sidebar button:last-child:hover {
+  background: #b71c1c !important;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background: #ffffff;
+  border-left: 1px solid #ddd;
+}

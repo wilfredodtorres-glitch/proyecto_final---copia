@@ -319,7 +319,7 @@ export default function DashboardAdmin() {
                 <h2>Actividad Reciente</h2>
                 <button className="btn-primary" onClick={loadReport}><Search size={18} /> Actualizar</button>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
+              <div className="responsive-grid" style={{ display: 'grid', gap: '20px' }}>
 
                 {/* Columna Reservados */}
                 <div>
@@ -386,7 +386,7 @@ export default function DashboardAdmin() {
                 <h2 style={{ fontSize: '1.4rem', margin: 0 }}>Gestión de Credenciales Staff</h2>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', alignItems: 'end' }}>
+              <div className="responsive-grid" style={{ display: 'grid', gap: '20px', alignItems: 'end' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   <label style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--synth-muted)', marginLeft: '4px' }}>NOMBRE COMPLETO</label>
                   <div style={{ position: 'relative' }}>
@@ -556,7 +556,7 @@ export default function DashboardAdmin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div className="responsive-grid" style={{ display: 'grid', gap: '20px' }}>
                   <div style={{ position: 'relative' }}>
                     <Mail size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--synth-muted)' }} />
                     <input

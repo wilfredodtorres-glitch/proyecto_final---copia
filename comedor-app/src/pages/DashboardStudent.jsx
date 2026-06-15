@@ -244,7 +244,7 @@ export default function DashboardStudent({ userEmail, userId }) {
         </div>
         <div className="tabs-container" style={{ margin: 0 }}>
           <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            <Menu size={18} /> {isMenuOpen ? 'Cerrar Menú' : 'Menú Estudiantil'}
+            <Menu size={18} /> {isMenuOpen ? 'Cerrar' : 'Menú'}
           </button>
           <div className={`tabs ${isMenuOpen ? 'open' : ''}`}>
             <button className={activeTab === 'comedor' ? 'active' : ''} onClick={() => { setActiveTab('comedor'); setIsMenuOpen(false); }}><Coffee size={18} /> Comedor</button>

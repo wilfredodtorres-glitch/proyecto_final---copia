@@ -190,7 +190,7 @@ export default function DashboardAdmin() {
 
       <div className="tabs-container">
         <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <Menu size={18} /> {isMenuOpen ? 'Cerrar Menú' : 'Opciones de Administrador'}
+          <Menu size={18} /> {isMenuOpen ? 'Cerrar' : 'Menú'}
         </button>
         <div className={`tabs ${isMenuOpen ? 'open' : ''}`}>
           <button className={activeTab === 'verificar' ? 'active' : ''} onClick={() => { setActiveTab('verificar'); setIsMenuOpen(false); }}><ShieldCheck size={18} /> Verificar</button>
@@ -210,25 +210,26 @@ export default function DashboardAdmin() {
         {activeTab === 'verificar' && (
           <div className="card" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <h2 style={{ marginBottom: '2rem', textAlign: 'center' }}>Control de Acceso</h2>
-            <div style={{ display: 'flex', gap: '15px', marginBottom: '3rem' }}>
+            <div className="verify-search-row">
               <input 
                 type="text" 
                 placeholder="Ingresar número de carnet para verificación manual..." 
                 value={carnet} 
                 onChange={(e) => setCarnet(e.target.value)} 
-                style={{ flex: 1, height: '64px', fontSize: '1.2rem', padding: '0 25px', borderRadius: '20px' }} 
+                className="search-input"
               />
-              <button className="btn-success" onClick={handleVerify} style={{ width: '80px', borderRadius: '20px' }}>
-                <Search size={28} />
-              </button>
-              <button 
-                className="btn-primary" 
-                onClick={() => setShowScanner(true)}
-                style={{ width: '80px', borderRadius: '20px', background: 'var(--synth-blue)', color: 'white' }}
-                title="Escanear QR"
-              >
-                <QrIcon size={28} />
-              </button>
+              <div className="action-btns">
+                <button className="btn-success" onClick={handleVerify}>
+                  <Search size={28} />
+                </button>
+                <button 
+                  className="btn-primary qr-btn" 
+                  onClick={() => setShowScanner(true)}
+                  title="Escanear QR"
+                >
+                  <QrIcon size={28} />
+                </button>
+              </div>
             </div>
 
             {showScanner && (

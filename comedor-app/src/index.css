@@ -650,3 +650,45 @@ input:focus {
     justify-content: center;
   }
 }
+
+/* --- Messages Responsive --- */
+.message-config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.msg-target-btns {
+  display: flex;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px;
+  border-radius: 16px;
+}
+
+.msg-target-btns button {
+  flex: 1;
+  padding: 8px;
+  font-size: 0.8rem;
+  background: transparent;
+  color: var(--synth-muted);
+}
+
+.msg-target-btns button.active-target {
+  background: white;
+  color: var(--synth-blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+  .message-config-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .msg-target-btns {
+    flex-wrap: wrap;
+  }
+  .msg-target-btns button {
+    flex: 1 1 30%;
+  }
+}

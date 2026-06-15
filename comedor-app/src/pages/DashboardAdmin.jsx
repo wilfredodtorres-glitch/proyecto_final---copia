@@ -562,7 +562,7 @@ export default function DashboardAdmin() {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <div className="message-config-row">
                   <div style={{ position: 'relative' }}>
                     <Mail size={18} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'var(--synth-muted)' }} />
                     <input
@@ -573,22 +573,22 @@ export default function DashboardAdmin() {
                       style={{ width: '100%', paddingLeft: '45px' }}
                     />
                   </div>
-                  <div style={{ display: 'flex', gap: '8px', background: '#f1f5f9', padding: '4px', borderRadius: '16px' }}>
+                  <div className="msg-target-btns">
                     <button
                       onClick={() => setMsgTarget('students')}
-                      style={{ flex: 1, padding: '8px', fontSize: '0.8rem', background: msgTarget === 'students' ? 'white' : 'transparent', color: msgTarget === 'students' ? 'var(--synth-blue)' : 'var(--synth-muted)', boxShadow: msgTarget === 'students' ? '0 4px 10px rgba(0,0,0,0.05)' : 'none' }}
+                      className={msgTarget === 'students' ? 'active-target' : ''}
                     >
                       <User size={16} /> Estudiantes
                     </button>
                     <button
                       onClick={() => setMsgTarget('staff')}
-                      style={{ flex: 1, padding: '8px', fontSize: '0.8rem', background: msgTarget === 'staff' ? 'white' : 'transparent', color: msgTarget === 'staff' ? 'var(--synth-blue)' : 'var(--synth-muted)', boxShadow: msgTarget === 'staff' ? '0 4px 10px rgba(0,0,0,0.05)' : 'none' }}
+                      className={msgTarget === 'staff' ? 'active-target' : ''}
                     >
                       <UserPlus size={16} /> Staff
                     </button>
                     <button
                       onClick={() => setMsgTarget('both')}
-                      style={{ flex: 1, padding: '8px', fontSize: '0.8rem', background: msgTarget === 'both' ? 'white' : 'transparent', color: msgTarget === 'both' ? 'var(--synth-blue)' : 'var(--synth-muted)', boxShadow: msgTarget === 'both' ? '0 4px 10px rgba(0,0,0,0.05)' : 'none' }}
+                      className={msgTarget === 'both' ? 'active-target' : ''}
                     >
                       <Globe size={16} /> Global
                     </button>

@@ -13,11 +13,12 @@ import {
 } from '../services/studentService'
 import { getMessagesForStudents } from '../services/messageService'
 import { uploadPhoto } from '../services/authService'
-import { Coffee, History, User, Mail, Settings, LogOut, ChevronRight, CheckCircle2, XCircle, Utensils, Moon, QrCode as QrIcon } from 'lucide-react'
+import { Menu, Coffee, History, User, Mail, Settings, LogOut, ChevronRight, CheckCircle2, XCircle, Utensils, Moon, QrCode as QrIcon } from 'lucide-react'
 import { QRCodeCanvas } from 'qrcode.react'
 
 export default function DashboardStudent({ userEmail, userId }) {
   const [activeTab, setActiveTab] = useState('comedor')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [profile, setProfile] = useState(null)
   const [editMode, setEditMode] = useState(false)
@@ -241,27 +242,32 @@ export default function DashboardStudent({ userEmail, userId }) {
             Hola, <span style={{ color: 'var(--synth-blue)' }}>{profile?.nombre?.split(' ')[0]}</span>
           </h2>
         </div>
-        <div className="tabs" style={{ margin: 0 }}>
-          <button className={activeTab === 'comedor' ? 'active' : ''} onClick={() => setActiveTab('comedor')}><Coffee size={18} /> Comedor</button>
-          <button className={activeTab === 'historial' ? 'active' : ''} onClick={() => setActiveTab('historial')}><History size={18} /> Historial</button>
-          <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => setActiveTab('mensajes')} style={{ position: 'relative' }}>
-            <Mail size={18} /> Mensajes
-            {unreadCount > 0 && (
-              <span style={{
-                background: '#ef4444',
-                color: 'white',
-                fontSize: '0.7rem',
-                padding: '2px 7px',
-                borderRadius: '50px',
-                marginLeft: '8px',
-                fontWeight: '800',
-                boxShadow: '0 2px 8px rgba(239, 68, 68, 0.4)'
-              }}>
-                {unreadCount}
-              </span>
-            )}
+        <div className="tabs-container" style={{ margin: 0 }}>
+          <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Menu size={18} /> {isMenuOpen ? 'Cerrar Menú' : 'Menú Estudiantil'}
           </button>
-          <button className={activeTab === 'perfil' ? 'active' : ''} onClick={() => setActiveTab('perfil')}><User size={18} /> Perfil</button>
+          <div className={`tabs ${isMenuOpen ? 'open' : ''}`}>
+            <button className={activeTab === 'comedor' ? 'active' : ''} onClick={() => { setActiveTab('comedor'); setIsMenuOpen(false); }}><Coffee size={18} /> Comedor</button>
+            <button className={activeTab === 'historial' ? 'active' : ''} onClick={() => { setActiveTab('historial'); setIsMenuOpen(false); }}><History size={18} /> Historial</button>
+            <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => { setActiveTab('mensajes'); setIsMenuOpen(false); }} style={{ position: 'relative' }}>
+              <Mail size={18} /> Mensajes
+              {unreadCount > 0 && (
+                <span style={{
+                  background: '#ef4444',
+                  color: 'white',
+                  fontSize: '0.7rem',
+                  padding: '2px 7px',
+                  borderRadius: '50px',
+                  marginLeft: '8px',
+                  fontWeight: '800',
+                  boxShadow: '0 2px 8px rgba(239, 68, 68, 0.4)'
+                }}>
+                  {unreadCount}
+                </span>
+              )}
+            </button>
+            <button className={activeTab === 'perfil' ? 'active' : ''} onClick={() => { setActiveTab('perfil'); setIsMenuOpen(false); }}><User size={18} /> Perfil</button>
+          </div>
         </div>
       </header>
 

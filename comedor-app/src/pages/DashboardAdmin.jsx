@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import { verifyStudent, registerMealById, getReport, getStudentTodayMeals, undoMealPickup, getStudentsList, toggleStudentActive, deleteStudent, updateStudentPlan, createMeal } from '../services/adminService'
 import { createStaffAccount, getStaffList, updateStaffPermissions, toggleStaffActive, deleteStaff } from '../services/staffService'
 import { sendMessage, getMessagesForStudents, getMessagesForStaff, deleteMultipleMessages, deleteAllMessages } from '../services/messageService'
-import { Mail, Send, Trash2, CheckSquare, User, ClipboardList, BarChart3, UserPlus, Search, ArrowRight, ShieldCheck, Square, Coffee, Utensils, Moon, Globe, Calendar, QrCode as QrIcon } from 'lucide-react'
+import { Menu, Mail, Send, Trash2, CheckSquare, User, ClipboardList, BarChart3, UserPlus, Search, ArrowRight, ShieldCheck, Square, Coffee, Utensils, Moon, Globe, Calendar, QrCode as QrIcon } from 'lucide-react'
 import MenuManager from '../components/admin/MenuManager'
 import QRScanner from '../components/common/QRScanner'
 
 
 export default function DashboardAdmin() {
   const [activeTab, setActiveTab] = useState('verificar')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [carnet, setCarnet] = useState('')
   const [studentInfo, setStudentInfo] = useState(null)
   const [studentMeals, setStudentMeals] = useState([])
@@ -187,13 +188,18 @@ export default function DashboardAdmin() {
         <p style={{ color: 'var(--synth-muted)', fontSize: '1.1rem' }}>Sincronización inteligente de flujos alimenticios.</p>
       </header>
 
-      <div className="tabs">
-        <button className={activeTab === 'verificar' ? 'active' : ''} onClick={() => setActiveTab('verificar')}><ShieldCheck size={18} /> Verificar</button>
-        <button className={activeTab === 'reporte' ? 'active' : ''} onClick={() => setActiveTab('reporte')}><BarChart3 size={18} /> Reporte</button>
-        <button className={activeTab === 'personal' ? 'active' : ''} onClick={() => setActiveTab('personal')}><UserPlus size={18} /> Personal</button>
-        <button className={activeTab === 'estudiantes' ? 'active' : ''} onClick={() => setActiveTab('estudiantes')}><User size={18} /> Estudiantes</button>
-        <button className={activeTab === 'menus' ? 'active' : ''} onClick={() => setActiveTab('menus')}><Calendar size={18} /> Menús</button>
-        <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => setActiveTab('mensajes')}><Mail size={18} /> Mensajes</button>
+      <div className="tabs-container">
+        <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Menu size={18} /> {isMenuOpen ? 'Cerrar Menú' : 'Opciones de Administrador'}
+        </button>
+        <div className={`tabs ${isMenuOpen ? 'open' : ''}`}>
+          <button className={activeTab === 'verificar' ? 'active' : ''} onClick={() => { setActiveTab('verificar'); setIsMenuOpen(false); }}><ShieldCheck size={18} /> Verificar</button>
+          <button className={activeTab === 'reporte' ? 'active' : ''} onClick={() => { setActiveTab('reporte'); setIsMenuOpen(false); }}><BarChart3 size={18} /> Reporte</button>
+          <button className={activeTab === 'personal' ? 'active' : ''} onClick={() => { setActiveTab('personal'); setIsMenuOpen(false); }}><UserPlus size={18} /> Personal</button>
+          <button className={activeTab === 'estudiantes' ? 'active' : ''} onClick={() => { setActiveTab('estudiantes'); setIsMenuOpen(false); }}><User size={18} /> Estudiantes</button>
+          <button className={activeTab === 'menus' ? 'active' : ''} onClick={() => { setActiveTab('menus'); setIsMenuOpen(false); }}><Calendar size={18} /> Menús</button>
+          <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => { setActiveTab('mensajes'); setIsMenuOpen(false); }}><Mail size={18} /> Mensajes</button>
+        </div>
       </div>
 
       <div className="tab-content">

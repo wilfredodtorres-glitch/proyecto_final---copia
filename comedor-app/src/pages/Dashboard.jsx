@@ -69,19 +69,7 @@ function Dashboard() {
   return (
     <div className="dashboard-layout" style={{ minHeight: '100vh' }}>
       {/* Barra Superior Fija para evitar solapamientos */}
-      <nav style={{ 
-        position: 'fixed', 
-        top: 0, 
-        left: 0, 
-        right: 0, 
-        height: '80px', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'flex-end', 
-        padding: '0 40px', 
-        zIndex: 1000,
-        pointerEvents: 'none' // Permite clics a través del nav excepto en el botón
-      }}>
+      <nav className="top-nav">
         <button 
           onClick={handleLogout} 
           className="btn-primary" 

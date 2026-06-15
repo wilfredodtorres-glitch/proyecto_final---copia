@@ -59,6 +59,20 @@ body::after {
   transition: width 0.3s ease;
 }
 
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 40px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
 .login-container {
   min-height: 90vh;
   display: flex;
@@ -147,9 +161,36 @@ body::after {
     padding: 20px 0;
   }
   
-  .tabs {
+  .tabs-container {
     width: 100%;
-    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .tabs {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    border: 1px solid var(--glass-border);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 50;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+
+  .tabs.open {
+    display: flex;
+  }
+  
+  .tabs button {
+    width: 100%;
+    text-align: left;
     justify-content: flex-start;
   }
   
@@ -159,6 +200,18 @@ body::after {
   }
   
   h1 { font-size: 2rem !important; }
+
+  .top-nav {
+    padding: 0 16px;
+  }
+
+  .card {
+    padding: 16px !important;
+  }
+
+  .grid-fluid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- Tarjetas Glass Blancas --- */
@@ -249,16 +302,34 @@ button {
 }
 
 /* --- Tabs --- */
+.tabs-container {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 40px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: white;
+  border: 1px solid var(--glass-border);
+  color: var(--synth-dark);
+  padding: 12px 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
 .tabs {
   display: flex;
   gap: 10px;
-  margin-bottom: 40px;
   background: #f1f5f9;
   padding: 6px;
   border-radius: 20px;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .tabs button {

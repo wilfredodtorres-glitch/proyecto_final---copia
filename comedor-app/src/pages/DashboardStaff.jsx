@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getStaffProfile } from '../services/staffService'
 import { verifyStudent, registerMealById, getReport, getStudentTodayMeals, undoMealPickup, createMeal, getStudentsList, toggleStudentActive } from '../services/adminService'
 import { getMessagesForStaff } from '../services/messageService'
-import { Mail, ClipboardList, Search, Info, CheckCircle2, XCircle, RotateCcw, User, Coffee, Utensils, Moon, Calendar, UserX, QrCode as QrIcon } from 'lucide-react'
+import { Menu, Mail, ClipboardList, Search, Info, CheckCircle2, XCircle, RotateCcw, User, Coffee, Utensils, Moon, Calendar, UserX, QrCode as QrIcon } from 'lucide-react'
 import MenuViewer from '../components/staff/MenuViewer'
 import QRScanner from '../components/common/QRScanner'
 
@@ -17,6 +17,7 @@ export default function DashboardStaff({ userEmail }) {
   const [inbox, setInbox] = useState([])
   const [unreadCount, setUnreadCount] = useState(0)
   const [activeTab, setActiveTab] = useState('gestion')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [reportData, setReportData] = useState([])
   const [reportDate, setReportDate] = useState('')
   const [staffStudentsList, setStaffStudentsList] = useState([])
@@ -180,15 +181,20 @@ export default function DashboardStaff({ userEmail }) {
           <h1 style={{ fontSize: '2.5rem' }}>Staff <span style={{ color: 'var(--synth-blue)' }}>COSEVA.</span></h1>
           <p style={{ color: 'var(--synth-muted)' }}>Panel de control operativo de turno.</p>
         </div>
-        <div className="tabs">
-          <button className={activeTab === 'gestion' ? 'active' : ''} onClick={() => setActiveTab('gestion')}><ClipboardList size={18} /> Gestión</button>
-          {perms?.perm_desactivar_estudiante && (
-            <button className={activeTab === 'estudiantes' ? 'active' : ''} onClick={() => setActiveTab('estudiantes')}><UserX size={18} /> Estudiantes</button>
-          )}
-          {perms?.perm_ver_menus && (
-            <button className={activeTab === 'menus' ? 'active' : ''} onClick={() => setActiveTab('menus')}><Calendar size={18} /> Menús de la Semana</button>
-          )}
-          <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => setActiveTab('mensajes')}><Mail size={18} /> Mensajes {unreadCount > 0 && `(${unreadCount})`}</button>
+        <div className="tabs-container">
+          <button className="mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            <Menu size={18} /> {isMenuOpen ? 'Cerrar Menú' : 'Opciones del Turno'}
+          </button>
+          <div className={`tabs ${isMenuOpen ? 'open' : ''}`}>
+            <button className={activeTab === 'gestion' ? 'active' : ''} onClick={() => { setActiveTab('gestion'); setIsMenuOpen(false); }}><ClipboardList size={18} /> Gestión</button>
+            {perms?.perm_desactivar_estudiante && (
+              <button className={activeTab === 'estudiantes' ? 'active' : ''} onClick={() => { setActiveTab('estudiantes'); setIsMenuOpen(false); }}><UserX size={18} /> Estudiantes</button>
+            )}
+            {perms?.perm_ver_menus && (
+              <button className={activeTab === 'menus' ? 'active' : ''} onClick={() => { setActiveTab('menus'); setIsMenuOpen(false); }}><Calendar size={18} /> Menús de la Semana</button>
+            )}
+            <button className={activeTab === 'mensajes' ? 'active' : ''} onClick={() => { setActiveTab('mensajes'); setIsMenuOpen(false); }}><Mail size={18} /> Mensajes {unreadCount > 0 && `(${unreadCount})`}</button>
+          </div>
         </div>
       </header>
 
